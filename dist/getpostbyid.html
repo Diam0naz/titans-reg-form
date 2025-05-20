@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Get Post by ID</title>
+<link rel="stylesheet" href="./style.css">
+  <link rel="shortcut icon" href="./images/titans-logo.jpeg" type="image/x-icon">
+</head>
+
+<body class="bg-yellow-200 min-h-screen flex items-center justify-center text-black">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-4">Get a Post by ID</h1>
+
+    <label for="postIdInput" class="block mb-2 font-medium">Enter Post ID:</label>
+    <input type="number" id="postIdInput" placeholder="get post by id"
+      class="w-full p-2 border border-gray-300 rounded mb-4">
+
+    <button onclick="fetchPost()"
+      class="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 rounded mb-6">
+      Fetch Post
+    </button>
+
+    <h2 class="text-xl font-semibold mb-2">Post Data:</h2>
+    <div id="output" class="bg-yellow-100 p-3 rounded text-sm"></div>
+  </div>
+
+  <script>
+    function fetchPost() {
+      const postId = document.getElementById('postIdInput').value;
+
+      if (!postId) {
+        document.getElementById('output').textContent = 'Please enter a post ID.';
+        return;
+      }
+
+      fetch(`https://test.blockfuselabs.com/api/posts/${postId}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Post with ID ${postId} not found.`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          const outputDiv = document.getElementById('output');
+          outputDiv.innerHTML = `
+            <strong>Title:</strong> ${data.title}<br>
+            <strong>Content:</strong> ${data.body || data.content || 'No content available.'}
+          `;
+        })
+        .catch(error => {
+          document.getElementById('output').textContent = 'Error: ' + error.message;
+        });
+    }
+  </script>
+</body>
+
+</html>

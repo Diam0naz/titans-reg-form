@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Comment</title>
+ <link rel="stylesheet" href="./style.css">
+  <link rel="shortcut icon" href="./images/titans-logo.jpeg" type="image/x-icon">
+</head>
+<body class="bg-white text-black min-h-screen flex items-center justify-center py-10 px-4">
+  <div class="w-full max-w-md bg-yellow-50 p-6 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-bold text-yellow-600 mb-6 text-center">Add Comment to a Post</h2>
+
+    <form id="commentForm" class="space-y-4">
+      <div>
+        <label for="postId" class="block font-semibold mb-1">Post ID:</label>
+        <input type="text" id="postId" required
+          class="w-full border border-yellow-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+      </div>
+
+      <div>
+        <label for="commentContent" class="block font-semibold mb-1">Comment:</label>
+        <textarea id="commentContent" required rows="4"
+          class="w-full border border-yellow-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+      </div>
+
+      <button type="submit"
+        class="w-full bg-yellow-500 text-white py-2 rounded font-semibold hover:bg-yellow-600 transition">
+        Submit Comment
+      </button>
+    </form>
+
+    <p id="message" class="mt-4 text-sm font-medium text-center"></p>
+  </div>
+
+  <script>
+    document.getElementById("commentForm").addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      const postId = document.getElementById("postId").value;
+      const content = document.getElementById("commentContent").value;
+      const url = `https://test.blockfuselabs.com/api/posts/${postId}/comments`;
+      const message = document.getElementById("message");
+
+      message.textContent = '';
+      message.className = "mt-4 text-sm font-medium text-center text-black";
+
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer 23|RQUdIcewsgTJN2fboCJgTVKEAhqbjE7NfQFVnRW30c1a2910"
+          },
+          body: JSON.stringify({ content })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            console.log(response)
+          throw new Error(result.message || "Failed to add comment");
+        }
+
+        message.className = "mt-4 text-green-600 text-sm font-medium text-center";
+        message.textContent = "Comment posted successfully!";
+        console.log(response);
+        document.getElementById("commentForm").reset();
+      } catch (error) {
+        message.className = "mt-4 text-red-600 text-sm font-medium text-center";
+        message.textContent = " " + error.message;
+        console.error("POST comment error:", error);
+      }
+    });
+  </script>
+</body>
+</html>

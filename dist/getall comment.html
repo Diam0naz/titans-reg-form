@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fetch Comments</title>
+ <link rel="stylesheet" href="./style.css">
+  <link rel="shortcut icon" href="./images/titans-logo.jpeg" type="image/x-icon">
+</head>
+<body class="bg-white text-black min-h-screen flex flex-col items-center justify-center py-10 px-4">
+
+  <h2 class="text-2xl font-bold text-yellow-600 mb-6">Get Comments for a Post</h2>
+
+  <form id="commentForm" class="w-full max-w-md bg-yellow-50 p-6 rounded-lg shadow-md">
+    <label for="postId" class="block mb-2 font-semibold">Post ID:</label>
+    <input type="text" id="postId" required
+      class="w-full p-2 mb-4 border border-yellow-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500">
+
+    <button type="submit"
+      class="w-full bg-yellow-500 text-white font-semibold py-2 rounded hover:bg-yellow-600 transition">
+      Get Comments
+    </button>
+  </form>
+
+  <ul id="commentsList" class="mt-6 w-full max-w-md space-y-2 list-disc list-inside text-sm"></ul>
+  <p id="message" class="mt-4 text-red-600 font-medium"></p>
+
+  <script>
+    document.getElementById("commentForm").addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      const postId = document.getElementById("postId").value;
+      const url = `https://test.blockfuselabs.com/api/posts/${postId}/comments`;
+      const commentsList = document.getElementById("commentsList");
+      const message = document.getElementById("message");
+
+      commentsList.innerHTML = '';
+      message.textContent = '';
+
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Authorization": "Bearer 23|RQUdIcewsgTJN2fboCJgTVKEAhqbjE7NfQFVnRW30c1a2910"
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch comments");
+        }
+
+        const comments = await response.json();
+
+        if (Array.isArray(comments) && comments.length > 0) {
+          comments.forEach(comment => {
+            const li = document.createElement("li");
+            li.textContent = comment.content || "(No content)";
+            commentsList.appendChild(li);
+          });
+        } else {
+          message.classList.remove("text-red-600");
+          message.classList.add("text-gray-600");
+          message.textContent = "No comments found for this post.";
+        }
+      } catch (error) {
+        message.classList.remove("text-gray-600");
+        message.classList.add("text-red-600");
+        message.textContent = "error " + error.message;
+        console.error("Fetch error:", error);
+      }
+    });
+  </script>
+</body>
+</html>
