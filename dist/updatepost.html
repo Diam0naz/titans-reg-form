@@ -1,45 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Update Post Test</title>
-<link rel="stylesheet" href="./style.css">
-<link rel="shortcut icon" href="./images/titans-logo.jpeg" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <title>Update Post</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="./images/titans-logo.jpeg" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
-  <div class="w-full max-w-md bg-white shadow-lg rounded-lg p-6">
-    <h2 class="text-2xl font-bold text-yellow-600 mb-4 text-center">Update Post by ID</h2>
+  <div class="w-full max-w-md bg-white shadow-lg rounded-2xl p-6">
+    <h2 class="text-3xl font-bold text-yellow-600 mb-6 text-center">Update Post</h2>
 
-    <div class="space-y-4">
-      <label for="title" class="font-semibold text-gray-700">Title:</label>
-      <input type="text" id="title" placeholder="Enter new title"
-        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+    <div class="space-y-5">
+      <div>
+        <label for="title" class="block font-semibold text-gray-700 mb-1">Title</label>
+        <input type="text" id="title" placeholder="Enter new title"
+          class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+      </div>
 
-      <label for="content" class="font-semibold text-gray-700">Content:</label>
-      <textarea id="content" placeholder="Enter new content"
-        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+      <div>
+        <label for="content" class="block font-semibold text-gray-700 mb-1">Content</label>
+        <textarea id="content" rows="4" placeholder="Enter new content"
+          class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+      </div>
 
-      <label for="postId" class="font-semibold text-gray-700">Post ID:</label>
-      <input type="text" id="postId" placeholder="Enter post ID"
-        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+      <div>
+        <label for="postId" class="block font-semibold text-gray-700 mb-1">Post ID</label>
+        <input type="text" id="postId" placeholder="Enter post ID"
+          class="w-full border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+      </div>
 
       <button onclick="updatePost()"
-        class="w-full bg-yellow-600 text-white py-2 px-4 rounded hover:bg-yellow-700 transition">
+        class="w-full bg-yellow-600 hover:bg-yellow-700 text-white py-3 rounded-xl font-bold transition duration-300">
         Update Post
       </button>
-    </div>
 
-    <pre id="result" class="mt-6 bg-gray-50 p-4 rounded text-sm text-gray-800 overflow-x-auto border-l-4 border-yellow-600"></pre>
+      <pre id="result"
+        class="mt-4 bg-gray-50 border-l-4 border-yellow-600 p-4 rounded text-sm text-gray-800 overflow-x-auto whitespace-pre-wrap"></pre>
+    </div>
   </div>
 
   <script>
     async function updatePost() {
-      let postId = document.getElementById("postId").value;
-      let  title = document.getElementById("title").value;
-      let content = document.getElementById("content").value;
-      let resultDiv = document.getElementById("result");
+      const postId = document.getElementById("postId").value;
+      const title = document.getElementById("title").value;
+      const content = document.getElementById("content").value;
+      const resultDiv = document.getElementById("result");
 
-    
       if (!postId || !title || !content) {
         resultDiv.textContent = "All fields are required!";
         return;
@@ -48,25 +55,23 @@
       const url = `https://test.blockfuselabs.com/api/posts/${postId}`;
       const payload = { title, content };
 
-      console.log("Sending:", payload);
-
       try {
         const response = await fetch(url, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            "Accept": "application/json",
             "Authorization": "Bearer 265|bGq3WX6mPm5dn7nd1tuQj74tAi44AzfLBtsVwRb71283a75c"
           },
           body: JSON.stringify(payload)
         });
 
-        const data = await response.json();
+        const data = await response.json().catch(() => ({}));
 
-        if (response.ok) {
-          console.log("Response:", data);
-          resultDiv.innerHTML = `Post Updated!<br><br>`;
+        if (!response.ok) {
+          resultDiv.textContent = `Error ${response.status}: ${data.message || 'Unknown error.'}`;
         } else {
-          resultDiv.textContent = `Error ${response.status}: ${data.message || JSON.stringify(data)}`;
+          resultDiv.textContent = `Post Updated Successfully!\n\nTitle: ${data.title}\nContent: ${data.content}`;
         }
       } catch (error) {
         resultDiv.textContent = `Fetch error: ${error.message}`;
