@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Create Post</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="shortcut icon" href="./images/titans-logo.jpeg" type="image/x-icon">
+</head>
+
+<body class="bg-white text-black min-h-screen">
+
+  <div class="flex w-full min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-yellow-500 text-white flex flex-col py-6 px-4 space-y-4">
+      <h2 class="text-2xl font-bold mb-6">Dashboard</h2>
+      <nav class="flex flex-col space-y-3">
+        <a href="./index.html" class="hover:bg-yellow-600 px-3 py-2 rounded">🏠 Home</a>
+        <a href="./categories.html" class="hover:bg-yellow-600 px-3 py-2 rounded">📝 Categories</a>
+        <a href="./getpostbyid.html" class="hover:bg-yellow-600 px-3 py-2 rounded">📄 Get Post By {id}</a>
+        <a href="./delete.html" class="hover:bg-yellow-600 px-3 py-2 rounded">🗑️ Delete Post by {id}</a>
+        <a href="./updatepost.html" class="hover:bg-yellow-600 px-3 py-2 rounded">✏️  Update a Post</a>
+        <a href="#" class="hover:bg-yellow-600 px-3 py-2 rounded">⚙️ Settings</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col items-center py-10 px-6">
+      <h1 class="text-3xl font-bold mb-6 text-yellow-500">Create a New Post</h1>
+
+      <form id="postForm" class="w-full max-w-md bg-yellow-100 p-6 rounded-lg shadow-md">
+        <label class="block mb-4">
+          <span class="text-sm font-medium">Title:</span>
+          <input type="text" id="title" required
+            class="w-full mt-1 p-2 rounded border border-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+        </label>
+
+        <label class="block mb-4">
+          <span class="text-sm font-medium">Content:</span>
+          <textarea id="content" required
+            class="w-full mt-1 p-2 rounded border border-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+        </label>
+
+        <label class="block mb-4">
+          <span class="text-sm font-medium">Category ID:</span>
+          <input type="number" id="category_id" required
+            class="w-full mt-1 p-2 rounded border border-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+        </label>
+
+        <button type="submit"
+          class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition">Submit</button>
+      </form>
+
+      <hr class="w-full max-w-md my-10 border-yellow-300">
+
+      <h2 class="text-2xl font-semibold text-yellow-600 mb-4">Created Post:</h2>
+      <div id="postDisplay"
+        class="w-full max-w-md bg-white border border-yellow-200 p-4 rounded shadow-sm text-black">
+        <!-- Post will be displayed here -->
+      </div>
+    </main>
+  </div>
+  <script>
+    document.getElementById('postForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const title = document.getElementById('title').value;
+      const content = document.getElementById('content').value;
+      const categoryId = parseInt(document.getElementById('category_id').value);
+
+      fetch('https://test.blockfuselabs.com/api/posts', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + '23|RQUdIcewsgTJN2fboCJgTVKEAhqbjE7NfQFVnRW30c1a2910'
+        },
+        body: JSON.stringify({
+          title: title,
+          content: content,
+          category_id: categoryId
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Response:', data);
+          alert('Post created!');
+
+          const postDiv = document.getElementById('postDisplay');
+          postDiv.innerHTML = `
+          <h3 class="text-xl font-bold mb-2">${data.title}</h3>
+          <p class="mb-2">${data.content}</p>`;
+
+          document.getElementById('postForm').reset();
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Failed to create post.');
+        });
+    });
+  </script>
+</body>
+
+</html>

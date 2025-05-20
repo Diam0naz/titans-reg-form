@@ -1,104 +1,575 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Register </title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="shortcut icon" href="./images/blockfuse-logo.png" type="image/x-icon">
-    <!-- <script src="script.js" defer></script> -->
-</head>
+    <link href="./style.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="./images/titans-logo.jpeg" type="image/x-icon">
+  </head>
 
-<body class="bg-[#e0e1e0]">
-
-    <section
-        class="lg:mt-7 lg:mx-24 lg:flex justify-between rounded-2xl lg:px-5 lg:py-5 bg-white shadow-lg shadow-yellow-500"
-        id="">
-        <img src="./images/loginbg.jpg" alt="" class="w-[30pc] h-[35pc] lg:rounded-3xl rounded-b-3xl">
-
-        <div class="lg:my-14 mx-10">
-            <p class="text-2xl lg:pt-1 pt-10">
-                Account
-            </p>
-            <p class="text-5xl font-bold ">
-                Sign up Today
-            </p>
-            <p class="my-5">
-                Enter your credentials to view all insights
-            </p>
-
-            <form action="" id="form">
-                <div class="lg:flex">
-                    <div class="lg: lg:mt-0 mt-5">
-                        <p class="ml-3 font-bold"> Full Name </p>
-    
-                        <div class="flex border-2 border-gray-500 rounded-2xl">
-                            <img src="./images/email-svgrepo-com.svg" alt="" class="w-11 bg-[#e0e1e0] rounded-l-2xl px-3">
-
-                            <input required type="text" name="text" id="fullname" class="py-2 font-bold bg-none pl-3 rounded-r-2xl mr-5 outline-none" placeholder="Enter your name">
-                        </div>
-                    </div>
-                
-                    <div class="lg:ml-5 lg:mt-0 mt-5">
-                        <p class="ml-3 font-bold"> E-mail </p>
-    
-                        <div class="flex border-2 border-gray-500 rounded-2xl">
-                            <img src="./images/email-svgrepo-com.svg" alt="" class="w-11 bg-[#e0e1e0] rounded-l-2xl px-3">
-
-                            <input required type="email" name="email" id="email" class="py-2 font-bold bg-none pl-3 rounded-r-2xl mr-5 outline-none" placeholder="Enter your name">
-                        </div>
-                    </div>
-                </div>
-
-            
-                <div class="lg:flex my-5 gap-5">
-
-                    <div class="bg-none">
-                        <p class="ml-3 font-bold"> Password </p>
-    
-                        <div class="flex border-2 border-gray-500 rounded-2xl">
-
-                            <img src="./images/password-minimalistic-svgrepo-com.svg" alt="" class="w-11 bg-[#e0e1e0] rounded-l-2xl px-3">
-
-                            <input type="password" name="password" id="password" class="py-2 font-bold bg-none pl-3 rounded-r-2xl outline-none" placeholder="Enter your Password">
-                        </div>
-                    </div>
-    
-                    <div class=" lg:mt-0 mt-5">
-                        <p class="ml-3 font-bold"> Choose a team </p>
-    
-                        <div class="flex rounded-2xl">
-                            <img src="./images/team-3-svgrepo-com.svg" alt="" class="w-11 bg-[#e0e1e0] rounded-l-2xl px-3">
-
-                            <select value="" class="py-3 font-bold bg-none px-10 rounded-r-2xl mr-5"> 
-                                <option value=""> Choose a team </option>
-                                <option name="" id=""> 404 </option>
-                                <option name="" id=""> Pull Request </option>
-                                <option name="" id=""> Elon </option>
-                                <option name="" id=""> Phoenix </option>
-                                <option name="" id=""> Titans </option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            
-                <button type="submit" id="submit" class="bg-yellow-500 font-bold lg:px-20 px-28 lg:ml-0 ml-6 mt-7 py-3 rounded-2xl shadow-sm hover:shadow-2xl hover:shadow-yellow-500 transition duration-700">
-                    Submit
-                </button>
-            </form>
-            
-
-            <button class="hover:bg-yellow-500 px-20 mt-7 py-3 rounded-2xl ml-5 transition duration-700"><a href="./login.html">
-                Have an account? <span class="font-bold"> Login </span>
-            </a></button>
-
-            <p id="message"></p>
-
+  <body class="m-0 p-0 box-border overflow-x-clip">
+    <section class="w-screen overflow-clip h-[100vh]">
+      <div class="h-[10%] p-2">
+        <nav
+          class="flex justify-around items-center h-full w-full p-5 px-24 shadow-sm shadow-gray-300 scale-125">
+          <div>
+            <img
+              src="./images/logo.png"
+              alt="logo"
+              class="h-[90%] w-32 object-cover" />
+          </div>
+          <div class="hidden md:block">
+            <ul
+              class="flex justify-center items-center text-lg font-semibold gap-5">
+              <li>
+                <a
+                  href=""
+                  class="text-blue-700 font-bold hover:border-b-2 border-solid border-blue-600"
+                  >HOME</a
+                >
+              </li>
+              <li>
+                <a
+                  href=""
+                  class="text-gray-700 hover:border-b-[1px] border-solid border-blue-600"
+                  >NEWS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="gallery.html"
+                  class="text-gray-700 hover:border-b-[1px] border-solid border-blue-600"
+                  >BUSINESS</a
+                >
+              </li>
+              <li>
+                <a
+                  href=""
+                  class="text-gray-700 hover:border-b-[1px] border-solid border-blue-600"
+                  >SECURITY</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#gallery"
+                  class="text-gray-700 hover:border-b-[1px] border-solid border-blue-600"
+                  >SPORTS</a
+                >
+              </li>
+              <li>
+                <a
+                  href=""
+                  class="text-gray-700 hover:border-b-[1px] border-solid border-blue-600"
+                  >INNOVATION</a
+                >
+              </li>
+              <li>
+                <a
+                  href=""
+                  class="text-gray-700 hover:border-b-[1px] border-solid border-blue-600"
+                  >POLITICS</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="lg:block hidden">
+            <div
+              class="flex justify-center items-center gap-3 text-base font-semibold">
+              <button class="w-32 h-12 px-6 py-3 bg-gray-200 rounded-lg">
+               <a href="./register.html"> Register</a>
+              </button>
+              <button
+                class="w-40 h-12 px-6 py-3 bg-[#17005E] rounded-lg text-gray-200">
+               <a href="./login.html"> Login</a>
+              </button>
+            </div>
+          </div>
+          <div class="md:hidden block">
+            <div class="flex justify-center gap-1 items-center ml-10">
+              <div class="text-gray-400">MENU</div>
+              <div class="flex flex-col justify-center gap-[2px]">
+                <div class="w-[25px] h-[3px] rounded-full bg-[#17005e]"></div>
+                <div class="w-[25px] h-[3px] rounded-full bg-[#17005e]"></div>
+                <div class="w-[25px] h-[3px] rounded-full bg-[#17005e]"></div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="h-[95%]">
+        <div id="slider" class="max-w-[100vw] h-[100%]">
+          <ul
+            id="list"
+            class="relative flex w-max h-full overflow-x-auto scroll-smooth snap-x snap-mandatory brightness-50">
+            <li>
+              <img
+                class="w-[100vw] h-full object-cover snap-start blur-sm"
+                src="./images/8248850.jpg"
+                alt="" />
+            </li>
+            <li>
+              <img
+                src="./images/stack-newspapers-magazines.jpg"
+                alt=""
+                class="w-[100vw] h-full object-cover snap-start blur-sm" />
+            </li>
+            <li>
+              <img
+                class="w-[100vw] h-full object-cover snap-start blur-sm"
+                src="/dist/img/displeased-black-woman-crowd-people-demonstrating-against-racism-city-streets.jpg"
+                alt="" />
+            </li>
+            <li>
+              <img
+                class="w-[100vw] h-full object-cover snap-start blur-sm"
+                src="./images/medium-shot-man-wearing-vr-glasses.jpg"
+                alt="" />
+            </li>
+            <li>
+              <img
+                class="w-[100vw] h-full object-cover snap-start blur-sm"
+                src="./images/professional-cyclist-woman.jpg"
+                alt="" />
+            </li>
+          </ul>
         </div>
+        <div class="">
+          <div
+            class="absolute top-[50%] left-[5%] w-[90%] lg:flex justify-between">
+            <button
+              id="prev"
+              class="brightness-105 hover:brightness-90 size-12 lg:bg-[#fff5] text-white rounded-[20px] font-mono font-bold flex justify-center items-center">
+              <img
+                src="./images/icons8-swap-100.png"
+                class="size-4 lg:flex hidden"
+                alt="" />
+            </button>
 
+            <div
+              class="flex flex-col gap-7 w-[85%] absolute -top-[6rem] left-1/2 -translate-x-1/2">
+              <div
+                class="text-pretty text-[3rem] leading-tight lg:text-[6rem] font-extrabold text-white">
+                Where Every Second
+                <span class="lg:text-[5rem] text-[2.5rem]">Tells a Story.</span>
+              </div>
+              <form action="" class="flex justify-center items-center gap-2">
+                <div class="">
+                  <input
+                    placeholder="Explore timelines, stories, and more..."
+                    type="text"
+                    class="w-96 p-5 h-12 rounded-full bg-[#fff5] focus:outline-none focus:text-white text-slate-300 brightness-105S" />
+                </div>
+                <button
+                  type="submit"
+                  class="hover:brightness-90 bg-[#fff5] flex size-12 justify-center items-center rounded-full">
+                  <img
+                    src="./images/icons8-search-50 (1).png"
+                    class="size-4"
+                    alt="" />
+                </button>
+              </form>
+            </div>
+            <button
+              id="next"
+              class="brightness-105 hover:brightness-90 size-12 hidden bg-[#fff5] text-white rounded-[20px] font-mono font-bold lg:flex justify-center items-center">
+              <img
+                src="./images/icons8-swap-100.png"
+                class="rotate-180 lg:flex hidden size-4"
+                alt="" />
+            </button>
+          </div>
+        </div>
+        <div id="dots" class="z-20">
+          <ul
+            id="dotList"
+            class="absolute bottom-10 left-0 w-full m-0 p-0 flex justify-center gap-3"></ul>
+        </div>
+      </div>
     </section>
+    <div class="w-[100vw] bg-gray-200 lg:p-8 px-auto">
+      <div class="flex flex-col">
+        <!-- Catalogue -->
+        <section class="bg-zinc-100">
+          <h2
+            class="text-[3rem] font-bold text-left text-gray-800 font-mono w-[90vw] lg:w-[90vw] mb-5 mx-auto mt-10">
+            Catalogue
+          </h2>
+          <ul
+            class="flex flex-col gap-2 lg:flex-row justify-around mb-4 mx-auto w-[90%]">
+            <li
+              class="list-none w-56 h-12 rounded-full bg-zinc-300 grid place-items-center">
+              <a href="" class="flex justify-around w-full items-center p-1"
+                ><span>BUSINESS</span
+                ><img
+                  src="./imagesicons8-search-50 (1).png"
+                  alt=""
+                  class="size-3"
+              /></a>
+            </li>
+            <li
+              class="list-none w-40 h-12 rounded-full bg-white grid place-items-center">
+              <a href="" class="flex justify-around w-full items-center p-1"
+                ><span>NEWS</span
+                ><img
+                  src="./images/icons8-search-50 (1).png"
+                  alt=""
+                  class="size-3"
+              /></a>
+            </li>
+            <li
+              class="list-none w-56 h-12 rounded-full bg-zinc-300 grid place-items-center">
+              <a href="" class="flex justify-around w-full items-center p-1"
+                ><span>INNOVATION</span
+                ><img
+                  src="./images/icons8-search-50 (1).png"
+                  alt=""
+                  class="size-3"
+              /></a>
+            </li>
+            <li
+              class="list-none w-56 h-12 rounded-full bg-white grid place-items-center">
+              <a href="" class="flex justify-around w-full items-center p-1"
+                ><span>SPORTS</span
+                ><img
+                  src="./images/icons8-search-50 (1).png"
+                  alt=""
+                  class="size-3"
+              /></a>
+            </li>
+            <li
+              class="list-none w-36 h-12 rounded-full bg-zinc-300 grid place-items-center">
+              <a href="" class="flex justify-around w-full items-center p-1"
+                ><span>POLITICS</span
+                ><img
+                  src="./images/icons8-search-50 (1).png"
+                  alt=""
+                  class="size-3"
+              /></a>
+            </li>
+            <li
+              class="list-none w-44 h-12 rounded-full bg-white grid place-items-center">
+              <a href="" class="flex justify-around w-full items-center p-1"
+                ><span>SECURITY</span
+                ><img
+                  src="./images/icons8-search-50 (1).png"
+                  alt=""
+                  class="size-3"
+              /></a>
+            </li>
+          </ul>
+        </section>
+        <h1
+          class="text-[2.5rem] lg:text-[3rem] font-bold text-left text-gray-800 font-mono lg:w-[80vw] w-[90vw] pb-8 mx-auto mt-10 lg:mt-20">
+          Latest Posts
+        </h1>
+      </div>
+      <div
+        class="lg:w-[80vw] lg:h-[80vh] w-[90vw] p-5 pb-10 flex flex-col mb-5 justify-center items-center mx-auto gap-5 lg:grid lg:grid-cols-3 lg:grid-rows-2 lg:gap-5 lg:p-10 lg:mx-auto">
+        <!-- first grid col -->
+        <div
+          class="col-start-1 col-end-2 row-span-2 grid grid-cols-1 grid-rows-2 gap-5">
+          <div
+            class="group row-start-1 row-end-2 overflow-hidden flex flex-col relative">
+            <!-- image -->
+            <div class="h-[100%] overflow-hidden rounded-lg">
+              <img
+                src="./images/politics-4.png"
+                alt=""
+                class="object-cover w-full h-full group-hover:scale-105 transition-all ease-out duration-1000" />
+            </div>
+            <!-- text -->
 
-</body>
+            <div
+              class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white p-4 rounded-b-lg w-full">
+              <h3 class="text-xl font-semibold">
+                Political unease in Bokkos, Plateau.
+              </h3>
+              <p class="hidden lg:block">
+                The Governor visited the People on Monday to express his
+                condolences..
+              </p>
+              <div class="flex justify-between items-center">
+                <p class="text-sm mt-1">May 9th, 2025</p>
+                <div class="flex justify-center items-center gap-4">
+                  <button class="w-28 h-12">
+                    <span class="text-red-500">Read More!</span>
+                  </button>
+                  <button><span class="text-gray-300">Share</span></button>
+                </div>
+              </div>
+            </div>
+            <!--  -->
+          </div>
 
+          <div class="group row-start-2 row-end-3 relative">
+            <!-- image -->
+            <div class="h-[100%] overflow-hidden rounded-lg">
+              <img
+                src="./images/politics-5.png"
+                alt=""
+                class="object-cover w-full h-full group-hover:scale-105 transition-all ease-out duration-1000" />
+            </div>
+            <!-- text -->
+
+            <div
+              class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white p-4 rounded-b-lg w-full">
+              <h3 class="text-xl font-semibold">
+                Political unease in Bokkos, Plateau.
+              </h3>
+              <p class="hidden lg:block">
+                The Governor visited the People on Monday to express his
+                condolences..
+              </p>
+              <div class="flex justify-between items-center">
+                <p class="text-sm mt-1">May 9th, 2025</p>
+                <div class="flex justify-center items-center gap-4">
+                  <button class="w-28 h-12">
+                    <span class="text-red-500">Read More!</span>
+                  </button>
+                  <button><span class="text-gray-300">Share</span></button>
+                </div>
+              </div>
+            </div>
+            <!--  -->
+          </div>
+        </div>
+        <!-- border-solid border-[1px] border-red-300 -->
+        <!-- second grid col -->
+        <div class="col-start-2 col-end-3 row-span-2 h-full relative">
+          <!-- image -->
+          <div class="overflow-hidden rounded-lg group h-full w-full">
+            <img
+              src="./images/politics-2.png"
+              alt=""
+              class="w-full h-full object-cover group-hover:scale-105 transition-all ease-out duration-1000" />
+          </div>
+          <!-- text -->
+
+          <div
+            class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white p-4 rounded-b-lg w-full">
+            <h3 class="text-xl font-semibold">
+              Political unease in Bokkos, Plateau.
+            </h3>
+            <p class="hidden lg:block">
+              The Governor visited the People on Monday to express his
+              condolences..
+            </p>
+            <div class="flex justify-between items-center">
+              <p class="text-sm mt-1 text-blue-400">May 9th, 2025</p>
+              <div class="flex justify-center items-center gap-4">
+                <button class="w-28 h-12">
+                  <span class="text-red-500">Read More!</span>
+                </button>
+                <button><span class="text-gray-300">Share</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- third grid col -->
+        <div
+          class="col-start-3 row-span-2 col-end-4 grid grid-cols-1 grid-rows-2 gap-5">
+          <div class="group row-start-1 row-end-2 flex flex-col relative">
+            <!-- image -->
+            <div class="h-[100%] overflow-hidden rounded-lg">
+              <img
+                src="./images/politics-3.png"
+                alt=""
+                class="object-cover w-full h-full group-hover:scale-105 transition-all ease-out duration-1000" />
+            </div>
+            <!-- text -->
+
+            <div
+              class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white p-4 rounded-b-lg w-full">
+              <h3 class="text-xl font-semibold">
+                Political unease in Bokkos, Plateau.
+              </h3>
+              <p class="hidden lg:block">
+                The Governor visited the People on Monday to express his
+                condolences..
+              </p>
+              <div class="flex justify-between items-center">
+                <p class="text-sm mt-1">May 9th, 2025</p>
+                <div class="flex justify-center items-center gap-4">
+                  <button class="w-28 h-12">
+                    <span class="text-red-500">Read More!</span>
+                  </button>
+                  <button><span class="text-gray-300">Share</span></button>
+                </div>
+              </div>
+            </div>
+            <!--  -->
+          </div>
+
+          <div class="group row-start-2 row-end-3 relative">
+            <!-- image -->
+            <div class="h-[100%] overflow-hidden rounded-lg">
+              <img
+                src="./images/politics-4.png"
+                alt=""
+                class="object-cover w-full h-full group-hover:scale-105 transition-all ease-out duration-1000" />
+            </div>
+            <!-- text -->
+
+            <div
+              class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white p-4 rounded-b-lg w-full">
+              <h3 class="text-xl font-semibold">
+                Political unease in Bokkos, Plateau.
+              </h3>
+              <p class="hidden lg:block">
+                The Governor visited the People on Monday to express his
+                condolences..
+              </p>
+              <div class="flex justify-between items-center">
+                <p class="text-sm mt-1">May 9th, 2025</p>
+                <div class="flex justify-center items-center gap-4">
+                  <button class="w-28 h-12">
+                    <span class="text-red-500">Read More!</span>
+                  </button>
+                  <button><span class="text-gray-300">Share</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl w-[80vw] mx-auto">
+      <!-- Trending Posts Section -->
+      <section>
+        <h2
+          class="mb-6 text-[2.5rem] lg:text-[3rem] font-bold text-left text-gray-800 font-mono lg:w-[80vw] w-[90vw] pb-8 mt-10 lg:mt-20">
+          Trending Posts
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6 w-[80vw]">
+          <!-- Main Large Post -->
+          <div class="md:col-span-2 relative lg:-left-20">
+            <img
+              src="./images/sports-2.png"
+              alt="Main Post"
+              class="w-full h-full object-cover rounded-lg" />
+            <div
+              class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white p-4 rounded-b-lg w-full">
+              <h3 class="text-lg font-semibold">
+                Meet the Maithil Women Artists of Nepal
+              </h3>
+              <p class="text-lg mt-1">May 9th, 2025</p>
+            </div>
+          </div>
+
+          <!-- Side Posts List -->
+          <div class="flex flex-col justify-between space-y-4 mr-20">
+            <!-- Side Post -->
+            <div class="flex gap-4">
+              <img
+                src="./images/crisis-2.png"
+                alt="Post Thumb"
+                class="size-20 lg:size-28 object-cover rounded-md" />
+              <div>
+                <h4 class="font-semibold text-sm lg:text-xl">
+                  Shree Madhav Narayan Mela
+                </h4>
+                <p class="text-xs lg:text-sm text-gray-500 mt-1">
+                  May 8th, 2025
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <img
+                src="./images/tech-4.png"
+                alt="Post Thumb"
+                class="size-20 lg:size-28 object-cover rounded-md" />
+              <div>
+                <h4 class="font-semibold text-sm lg:text-xl">
+                  The Creation of Kathmandu Valley
+                </h4>
+                <p class="text-xs lg:text-sm text-gray-500 mt-1">
+                  May 8th, 2025
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <img
+                src="./images/tech-6.png"
+                alt="Post Thumb"
+                class="size-20 lg:size-28 object-cover rounded-md" />
+              <div>
+                <h4 class="font-semibold text-sm lg:text-xl">
+                  The Creation of Kathmandu Valley
+                </h4>
+                <p class="text-xs lg:text-sm text-gray-500 mt-1">
+                  May 8th, 2025
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <img
+                src="./images/tech-5.png"
+                alt="Post Thumb"
+                class="size-20 lg:size-28 object-cover rounded-md" />
+              <div>
+                <h4 class="font-semibold text-sm lg:text-xl">
+                  The Creation of Kathmandu Valley
+                </h4>
+                <p class="text-xs lg:text-sm text-gray-500 mt-1">
+                  May 8th, 2025
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <img
+                src="./images/crisis-5.png"
+                alt="Post Thumb"
+                class="size-20 lg:size-28 object-cover rounded-md" />
+              <div>
+                <h4 class="font-semibold text-sm lg:text-xl">
+                  Celebrating Fulpatri
+                </h4>
+                <p class="text-xs lg:text-sm text-gray-500 mt-1">
+                  May 8th, 2025
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Gallery highlight -->
+      <section id="gallery" class="max-w-9xl mx-auto px-4 py-10">
+        <h2
+          class="text-2xl md:text-3xl font-bold mb-8 lg:text-[3rem] text-left text-gray-800 font-mono w-[90vw] lg:w-[90vw] mx-auto mt-10">
+          Gallery Highlights
+        </h2>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:mt-10">
+          <img
+            class="w-full h-52 object-cover rounded-md"
+            src="./images/crisis-2.png"
+            alt="" />
+          <img
+            class="w-full h-96 object-cover rounded-md"
+            src="./images/politics-1.png"
+            alt="" />
+          <img
+            class="w-full h-52 object-cover rounded-md"
+            src="./images/sports-2.png"
+            alt="" />
+          <img
+            class="w-full h-96 object-cover rounded-md relative lg:bottom-[175px]"
+            src="./images/professional-cyclist-woman.jpg"
+            alt="" />
+          <img
+            class="w-full h-52 object-cover rounded-md"
+            src="./images/tech-3.png"
+            alt="" />
+          <img
+            class="w-full h-96 object-cover rounded-md relative lg:bottom-[175px]"
+            src="./images/politics-6.png"
+            alt="" />
+        </div>
+      </section>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
 </html>

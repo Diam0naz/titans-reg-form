@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Patch Post</title>
+<link rel="stylesheet" href="./style.css">
+  <link rel="shortcut icon" href="./images/titans-logo.jpeg" type="image/x-icon">
+</head>
+<body class="bg-white text-black min-h-screen flex flex-col items-center justify-center py-10 px-4">
+
+  <h2 class="text-2xl font-bold text-yellow-600 mb-6">Update Post (PATCH)</h2>
+
+  <form id="updateForm" class="w-full max-w-md bg-yellow-50 p-6 rounded-lg shadow-md">
+    <label for="postId" class="block text-sm font-semibold mb-1">Post ID:</label>
+    <input type="text" id="postId" required
+      class="w-full p-2 mb-4 border border-yellow-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500">
+
+    <label for="title" class="block text-sm font-semibold mb-1">Title:</label>
+    <input type="text" id="title" required
+      class="w-full p-2 mb-4 border border-yellow-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500">
+
+    <label for="content" class="block text-sm font-semibold mb-1">Content:</label>
+    <textarea id="content"
+      class="w-full p-2 mb-4 border border-yellow-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+
+    <button type="submit"
+      class="w-full bg-yellow-500 text-white font-semibold py-2 rounded hover:bg-yellow-600 transition">
+      Update Post
+    </button>
+  </form>
+
+  <pre id="response" class="w-full max-w-md mt-6 p-4 bg-white border border-yellow-200 rounded text-sm overflow-auto"></pre>
+
+  <script>
+    document.getElementById("updateForm").addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      const postId = document.getElementById("postId").value;
+      const title = document.getElementById("title").value;
+      const content = document.getElementById("content").value;
+
+      const url = `https://test.blockfuselabs.com/api/posts/${postId}`;
+
+      const updatedData = content
+         { title, content }
+         { title };
+
+      try {
+        const response = await fetch(url, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer 23|RQUdIcewsgTJN2fboCJgTVKEAhqbjE7NfQFVnRW30c1a2910"
+          },
+          body: JSON.stringify(updatedData)
+        });
+
+        const rawText = await response.text();
+        let parsed;
+
+        try {
+          parsed = JSON.parse(rawText);
+        } catch (e) {
+          parsed = rawText;
+        }
+
+        document.getElementById("response").textContent =
+          `Status: ${response.status}\n\nRaw Response:\n${rawText}\n\nParsed JSON:\n` +
+          (typeof parsed === 'object' ? JSON.stringify(parsed, null, 2) : parsed);
+
+        if (!response.ok) {
+          console.error("Error details:", parsed);
+          throw new Error("Failed to update post");
+        }
+      } catch (error) {
+        document.getElementById("response").textContent =
+          `Error: ${error.message}\n\nSee console for details.`;
+        console.error("Fetch error:", error);
+      }
+    });
+  </script>
+</body>
+</html>

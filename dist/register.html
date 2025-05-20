@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Register </title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="./images/titans-logo.jpeg" type="image/x-icon">
+  
+</head>
+
+<body class="bg-[#e0e1e0]">
+
+    <section
+        class="lg:mt-7 lg:mx-24 lg:flex justify-between rounded-2xl lg:px-5 lg:py-5 bg-white shadow-lg shadow-yellow-500"
+        id="">
+        <img src="./images/loginbg.jpg" alt="" class="w-[30pc] h-[35pc] lg:rounded-3xl rounded-b-3xl">
+
+        <div class="lg:my-14 mx-10">
+            <p class="text-2xl lg:pt-1 pt-10">
+                Account
+            </p>
+            <p class="text-5xl font-bold ">
+                Sign up Today
+            </p>
+            <p class="my-5">
+                Enter your credentials to view all insights
+            </p>
+
+            <form action="" id="form">
+                <div class="lg:flex">
+                    <div class="lg: lg:mt-0 mt-5">
+                        <p class="ml-3 font-bold"> Full Name </p>
+    
+                        <div class="flex border-2 border-gray-500 rounded-2xl">
+                            <img src="./images/email-svgrepo-com.svg" alt="" class="w-11 bg-[#e0e1e0] rounded-l-2xl px-3">
+
+                            <input required type="text" name="text" id="fullname" class="py-2 font-bold bg-none pl-3 rounded-r-2xl mr-5 outline-none" placeholder="Enter your name">
+                        </div>
+                    </div>
+                
+                    <div class="lg:ml-5 lg:mt-0 mt-5">
+                        <p class="ml-3 font-bold"> E-mail </p>
+    
+                        <div class="flex border-2 border-gray-500 rounded-2xl">
+                            <img src="./images/email-svgrepo-com.svg" alt="" class="w-11 bg-[#e0e1e0] rounded-l-2xl px-3">
+
+                            <input required type="email" name="email" id="email" class="py-2 font-bold bg-none pl-3 rounded-r-2xl mr-5 outline-none" placeholder="Enter your name">
+                        </div>
+                    </div>
+                </div>
+
+            
+                <div class="lg:flex my-5 gap-5">
+
+                    <div class="bg-none">
+                        <p class="ml-3 font-bold"> Password </p>
+    
+                        <div class="flex border-2 border-gray-500 rounded-2xl">
+
+                            <img src="./images/password-minimalistic-svgrepo-com.svg" alt="" class="w-11 bg-[#e0e1e0] rounded-l-2xl px-3">
+
+                            <input type="password" name="password" id="password" class="py-2 font-bold bg-none pl-3 rounded-r-2xl outline-none" placeholder="Enter your Password">
+                        </div>
+                    </div>
+    
+                    <div class=" lg:mt-0 mt-5">
+                        <p class="ml-3 font-bold"> Choose a team </p>
+    
+                        <div class="flex rounded-2xl">
+                            <img src="./images/team-3-svgrepo-com.svg" alt="" class="w-11 bg-[#e0e1e0] rounded-l-2xl px-3">
+
+                            <select value="" class="py-3 font-bold bg-none px-10 rounded-r-2xl mr-5"> 
+                                <option value=""> Choose a team </option>
+                                <option name="" id=""> 404 </option>
+                                <option name="" id=""> Pull Request </option>
+                                <option name="" id=""> Elon </option>
+                                <option name="" id=""> Phoenix </option>
+                                <option name="" id=""> Titans </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            
+                <button type="submit" id="submit" class="bg-yellow-500 font-bold lg:px-20 px-28 lg:ml-0 ml-6 mt-7 py-3 rounded-2xl shadow-sm hover:shadow-2xl hover:shadow-yellow-500 transition duration-700">
+                    Submit
+                </button>
+            </form>
+            
+
+            <button class="hover:bg-yellow-500 px-20 mt-7 py-3 rounded-2xl ml-5 transition duration-700"><a href="./login.html">
+                Have an account? <span class="font-bold"> Login </span>
+            </a></button>
+
+            <p id="message"></p>
+
+        </div>
+
+    </section>
+<!-- <script src="script.js"></script> -->
+<script>
+    document.getElementById("register-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const team_name = document.getElementById("team").value;
+
+      fetch("https://test.blockfuselabs.com/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+          team_nam
+         }),
+      })
+        .then(async (response) => {
+          const data = await response.json();
+          if (response.ok) {
+            alert("User registered successfully!");
+            window.location.href = "./login.html";
+          } else {
+            alert(data.message || "Registration failed.");
+          }
+        })
+        .catch((error) => {
+          alert("Network error.");
+        });
+    });
+  </script>
+</body>
+
+</html>

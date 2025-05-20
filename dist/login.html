@@ -1,96 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Login </title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="shortcut icon" href="./images/blockfuse-logo.png" type="image/x-icon">
-    <script src="script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css" />
+<link rel="shortcut icon" href="./images/titans-logo.jpeg" type="image/x-icon">
 </head>
 <body class="bg-[#e0e1e0]">
-    
-    <section class="lg:mt-7 lg:mx-32 lg:flex flex-row-reverse justify-between rounded-2xl lg:px-5 lg:py-5 bg-white shadow-lg shadow-yellow-500" id="">
-        <img src="./images/login.jpg" alt="" class="w-[30pc] h-[35pc] lg:rounded-3xl rounded-b-3xl">
+  <section class="lg:mt-7 lg:mx-32 lg:flex flex-row-reverse justify-between rounded-2xl lg:px-5 lg:py-5 bg-white shadow-lg shadow-yellow-500">
+    <img src="./images/login.jpg" alt="" class="w-[30pc] h-[35pc] lg:rounded-3xl rounded-b-3xl" />
 
-        <div class="lg:my- mx-10">
-            <p class="text-2xl lg:mt-10 lg:pt-1 pt-10 text-center">
-                Welcome Back
-            </p>
-            <p class="text-5xl font-bold text-center">
-                Login to your Account
-            </p>
-            <p class="my-5 text-center">
-                It is nice to have you again
-            </p>
+    <div class="lg:my- mx-10">
+      <p class="text-2xl lg:mt-10 pt-10 text-center">Welcome Back</p>
+      <p class="text-5xl font-bold text-center">Login to your Account</p>
+      <p class="my-5 text-center">It is nice to have you again</p>
 
-            <form action="" id="loginForm">
-                <div class="">
+     
+      <form id="login-form">
+        <div class="">
+          <div>
+            <div class="flex border-2 border-gray-500 rounded-2xl mt-5">
+              <img src="./images/email-svgrepo-com (1).svg" alt="" class="w-11 bg-[#e0e1e0] rounded-l-2xl px-3" />
+              <input type="email" id="login-email" class="py-2 font-bold bg-none pl-3 rounded-r-2xl mr-5 outline-none" placeholder="Your E-mail" required />
+            </div>
+          </div>
 
-                    <div class="bg-none ">
-                        <div class="flex">
+          <div class="lg:mt-10 mt-5">
+            <div class="flex border-2 border-gray-500 rounded-2xl">
+              <img src="./images/password-safe-manager-svgrepo-com.svg" alt="" class="w-11 bg-[#e0e1e0] rounded-l-2xl px-3" />
+              <input type="password" id="login-password" class="py-2 font-bold bg-none pl-3 rounded-r-2xl mr-5 outline-none" placeholder="*********" required />
+            </div>
+          </div>
 
-                            <img src="./images/email-svgrepo-com (1).svg" alt="" class="w-11 bg-[#e0e1e0] rounded-l-2xl px-3">
-
-                            <input type="email" name="loginemail" id="full-name" class="py-2 font-bold bg-none pl-3 rounded-r-2xl mr-5 border-2 border-gray-500" placeholder="Your E-mail">
-                        </div>
-                    </div>
-    
-                    <div class="lg:mt-10 mt-5">
-                        <div class="flex ">
-                            <img src="./images/password-safe-manager-svgrepo-com.svg" alt="" class="w-11 bg-[#e0e1e0] rounded-l-2xl px-3">
-
-                            <input type="password" name="password" id="password" class="py-2 font-bold bg-none pl-3 rounded-r-2xl mr-5 border-2 border-gray-500" placeholder="*********">
-                        </div>
-                    </div>
-                </div>
-            </form>
-
-            <button type="submit" class="bg-yellow-500 font-bold lg:px-20 px-28 lg:ml-0 ml-6 mt-7 py-3 rounded-2xl shadow-sm hover:shadow-2xl hover:shadow-yellow-500 transition duration-700">
-                    Login
-                </button>
-
-            <button class="hover:bg-yellow-500 mt-7 px-5 py-3 rounded-2xl ml-2 transition duration-700"><a href="./index.html">
-                Don't have an account? <span class="font-bold underline"> Sign up </span>
-            </a></button>
-
-
+          <button type="submit" class="bg-yellow-500 font-bold lg:px-20 px-28 lg:ml-0 ml-6 mt-7 py-3 rounded-2xl shadow-sm hover:shadow-2xl hover:shadow-yellow-500 transition duration-700">
+            Login
+          </button>
         </div>
+      </form>
 
-    </section>
+      <button class="hover:bg-yellow-500 mt-7 px-5 py-3 rounded-2xl ml-2 transition duration-700">
+        <a href="./index.html">Don't have an account? <span class="font-bold underline">Sign up</span></a>
+      </button>
+    </div>
+  </section>
 
-    <script>
-        // Login Form
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('loginEmail');
-            const password = document.getElementById('loginPassword');
-            const result = document.getElementById('loginResult');
-            clearSpans(this);
-            result.innerHTML = '';
+ 
+   <script>
+    document.getElementById("login-form").addEventListener("submit", function (e) {
+      e.preventDefault();
 
-            let isValid = true;
+      const email = document.getElementById("login-email").value;
+      const password = document.getElementById("login-password").value;
 
-            if (!email.value.trim()) {
-                showError(email, "Email is required");
-                isValid = false;
-            }
-
-            if (!password.value.trim()) {
-                showError(password, "Password is required");
-                isValid = false;
-            }
-
-            if (isValid) {
-                if (email.value === hardcodedEmail && password.value === hardcodedPassword) {
-                    result.innerHTML = '<p class="success">Login successful!</p>';
-                } else {
-                    result.innerHTML = '<span>Invalid email or password</span>';
-                }
-            }
+      fetch("https://test.blockfuselabs.com/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          accept: "application/json"
+        },
+        body: JSON.stringify({ email, password })
+      })
+        .then(async (response) => {
+          const data = await response.json();
+          if (response.ok) {
+            alert("Login successful!");
+            localStorage.setItem("loggedInUser", JSON.stringify(data));
+            localStorage.setItem("authToken", data.token);
+            window.location.href = "./createPost.html";
+          } else {
+            alert(data.message || "Login failed.");
+          }
+        })
+        .catch((error) => {
+          alert("Network error.");
         });
-    </script>
-
-
+    });
+  </script>
 </body>
 </html>

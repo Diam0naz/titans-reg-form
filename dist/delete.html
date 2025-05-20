@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Delete Post</title>
+ <link rel="stylesheet" href="./style.css">
+  <link rel="shortcut icon" href="./images/titans-logo.jpeg" type="image/x-icon">
+</head>
+<body class="bg-white text-black min-h-screen flex items-center justify-center px-4 py-10">
+  <div class="w-full max-w-md bg-yellow-50 p-6 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-bold text-yellow-600 mb-6 text-center">Delete Post</h2>
+
+    <form id="deleteForm" class="space-y-4">
+      <div>
+        <label for="postId" class="block font-semibold mb-1">Post ID:</label>
+        <input type="text" id="postId" required
+          class="w-full border border-yellow-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+      </div>
+
+      <button type="submit"
+        class="w-full bg-yellow-500 text-white py-2 rounded font-semibold hover:bg-yellow-600 transition">
+        Delete Post
+      </button>
+    </form>
+
+    <p id="response" class="mt-4 text-sm font-medium text-center"></p>
+  </div>
+
+  <script>
+    document.getElementById("deleteForm").addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      const postId = document.getElementById("postId").value;
+      const url = `https://test.blockfuselabs.com/api/posts/${postId}`;
+      const responseDisplay = document.getElementById("response");
+
+      responseDisplay.textContent = '';
+      responseDisplay.className = "mt-4 text-sm font-medium text-center text-black";
+
+      try {
+        const response = await fetch(url, {
+          method: "DELETE",
+          headers: {
+            "Authorization": "Bearer 23|RQUdIcewsgTJN2fboCJgTVKEAhqbjE7NfQFVnRW30c1a2910"
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to delete post");
+        }
+
+        document.getElementById("deleteForm").reset();
+        responseDisplay.className = "mt-4 text-green-600 text-sm font-medium text-center";
+        responseDisplay.textContent = "Post deleted successfully!";
+      } catch (error) {
+        responseDisplay.className = "mt-4 text-red-600 text-sm font-medium text-center";
+        responseDisplay.textContent = "error" + error.message;
+        console.error("DELETE error:", error);
+      }
+    });
+  </script>
+</body>
+</html>
